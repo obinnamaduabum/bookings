@@ -1,0 +1,29 @@
+<div *ngIf="!fetching; else spinner" >
+  <h2>Things to do</h2>
+
+  <p>Show me things to do with an average score higher than </p>
+  <div [formGroup]="searchFormGroup">
+    <input (keyup)="onKey($event)" type="number">
+
+<!--    <button (click)="search()">Submit</button>-->
+  </div>
+
+<!--  <div *ngIf="innerLoader">-->
+    <div *ngFor="let attraction of attractions">
+      <div style="background-color: dodgerblue; color: white">
+        <span>{{attraction.score}}</span>
+      </div>
+      <div>
+        {{attraction?.name}}
+      </div>
+    </div>
+<!--  </div>-->
+
+</div>
+
+<ng-template #spinner>
+  <div>
+    <h1>Loading... </h1>
+  </div>
+</ng-template>
+
